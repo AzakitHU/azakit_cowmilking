@@ -79,7 +79,7 @@ local function spawncow()
         SetPedCanPlayAmbientAnims(createdcow, cow.cowsettings.Invincible)
         SetPedCanRagdollFromPlayerImpact(createdcow, not cow.cowettings.Invincible)
 
-        SetBlockingOfNonTemporaryEvents(createdcow, cow.coswettings.BlockingOfNonTemporaryEvents)
+        SetBlockingOfNonTemporaryEvents(createdcow, cow.cowsettings.BlockingOfNonTemporaryEvents)
 
         SetEntityAsMissionEntity(createdcow, true, true)
         SetModelAsNoLongerNeeded(`a_c_cow`)
