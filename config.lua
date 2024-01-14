@@ -11,7 +11,7 @@ HOMEMILK = "homemademilk" -- The reward for emptying the full bucket, the empty 
 Cow = {
     {
         cowCoords = vector4(2250.1177, 4909.5264, 39.7279, 313.6317), -- x, y, z, heading
-        cowettings = {
+        cowsettings = {
             Freezecow = false, -- Freeeze Cow
             Invincible = true, -- Invincible Cow
             BlockingOfNonTemporaryEvents = true, -- SetBlockingOfNonTemporaryEvents
@@ -19,7 +19,7 @@ Cow = {
     },
     {
         cowCoords = vector4(2234.4275, 4925.3271, 40.8214, 278.4554), -- x, y, z, heading
-        cowettings = {
+        cowsettings = {
             Freezecow = false,
             Invincible = true,
             BlockingOfNonTemporaryEvents = true, 
