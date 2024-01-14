@@ -6,7 +6,7 @@ RegisterServerCallback("azakit_cowmilking:exchangeProcess", function(source, cb,
         xPlayer.removeInventoryItem(BUCKET, 1)
         xPlayer.addInventoryItem(BUCKETMILK, 1) 
         cb(true)
-        local message = "**Steam:** " .. GetPlayerName(src) .. "\n**Identifier:** " .. xPlayer.identifier .. "\n**ID:** " .. src .. "\n**Log:** Successful milking of cow!"
+        local message = "**Steam:** " .. GetPlayerName(src) .. "\n**Identifier:** " .. xPlayer.identifier .. "\n**ID:** " .. src .. "\n**Log:** Successful milking a cow!"
         discordLog(message, Webhook)  
     else
         cb(false)
