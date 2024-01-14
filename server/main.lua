@@ -13,7 +13,7 @@ RegisterServerCallback("azakit_cowmilking:exchangeProcess", function(source, cb,
     end
 end)
 
-ESX.RegisterUsableItem('bucketmilk', function(source)
+ESX.RegisterUsableItem(BUCKETMILK, function(source)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     TriggerClientEvent('azakit_cowmilking:bucketmilk', src)
