@@ -72,14 +72,14 @@ local function spawncow()
 
         local createdcow = CreatePed('cow', `a_c_cow`, cow.cowCoords.x, cow.cowCoords.y, cow.cowCoords.z, cow.cowCoords.w, false, false)
 
-        FreezeEntityPosition(createdcow, cow.cowettings.Freezecow)
+        FreezeEntityPosition(createdcow, cow.cowsettings.Freezecow)
 
-        SetEntityInvincible(createdcow, cow.cowettings.Invincible)
-        SetPedDiesWhenInjured(createdcow, not cow.cowettings.Invincible)
-        SetPedCanPlayAmbientAnims(createdcow, cow.cowettings.Invincible)
+        SetEntityInvincible(createdcow, cow.cowsettings.Invincible)
+        SetPedDiesWhenInjured(createdcow, not cow.cowsettings.Invincible)
+        SetPedCanPlayAmbientAnims(createdcow, cow.cowsettings.Invincible)
         SetPedCanRagdollFromPlayerImpact(createdcow, not cow.cowettings.Invincible)
 
-        SetBlockingOfNonTemporaryEvents(createdcow, cow.cowettings.BlockingOfNonTemporaryEvents)
+        SetBlockingOfNonTemporaryEvents(createdcow, cow.coswettings.BlockingOfNonTemporaryEvents)
 
         SetEntityAsMissionEntity(createdcow, true, true)
         SetModelAsNoLongerNeeded(`a_c_cow`)
