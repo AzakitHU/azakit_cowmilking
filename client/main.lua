@@ -77,7 +77,7 @@ local function spawncow()
         SetEntityInvincible(createdcow, cow.cowsettings.Invincible)
         SetPedDiesWhenInjured(createdcow, not cow.cowsettings.Invincible)
         SetPedCanPlayAmbientAnims(createdcow, cow.cowsettings.Invincible)
-        SetPedCanRagdollFromPlayerImpact(createdcow, not cow.cowettings.Invincible)
+        SetPedCanRagdollFromPlayerImpact(createdcow, not cow.cowsettings.Invincible)
 
         SetBlockingOfNonTemporaryEvents(createdcow, cow.cowsettings.BlockingOfNonTemporaryEvents)
 
