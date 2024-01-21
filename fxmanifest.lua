@@ -9,7 +9,6 @@ description  'Milking a cow'
 
 client_scripts {
     'config.lua',
-    'client/main.lua',
 	"locales/*",
     'client/*'
 }
