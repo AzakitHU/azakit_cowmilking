@@ -122,7 +122,7 @@ function InteractMilking(index)
         if Interact then return end
         Interact = true
             local ped = PlayerPedId()
-            lib.requestAnimDict('mini@repair', 10)
+          --  lib.requestAnimDict('mini@repair', 10)
 			TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped", 8.0, -8.0, -1, 48, 0)
             if Check.EnableSkillCheck then
                 local success = lib.skillCheck({'easy', 'easy', 'easy', 'easy'}, { 'w', 'a', 's', 'd' }) 
