@@ -1,7 +1,9 @@
 LANGUAGE = 'en'
 
+FrameworkType = "ESX" -- or "QBCore" (and fxmanifest.lua)
 BUCKET = "bucket"  -- Is mandatory to start milking cows
 BUCKETMILK = "bucketmilk" -- The reward of milking cows
+InteractionType = "ox_target" -- Options: "ox_target" or "qb-target"
 
 FILLS = true  -- If true, the bucket milk becomes a usable item and can be filled into the bottles.
 BOTTLE = "bottle"  -- Bootle item
@@ -32,4 +34,8 @@ Check = {
     ProcessTime = 5, -- second - Only used when EnableSkillCheck is false.
 }
 
-Webhook = ""
+-- Skill Check Configuration
+SkillCheckDifficulty = {'easy', 'easy', 'easy', 'easy'}  -- Difficulty levels for skill checks (e.g., 'easy', 'medium', 'hard').
+SkillCheckKeys = {'w', 'a', 's', 'd'}  -- Keys that must be pressed during the skill check.
+
+Webhook = "" -- Discord Webhook
