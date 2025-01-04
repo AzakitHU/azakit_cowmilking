@@ -55,9 +55,9 @@ https://www.youtube.com/watch?v=Fbr0rSMUAyU
 	},
 
 # Requirements
-- ESX
+- ESX or QBCore
 - ox_lib
-- ox_target
+- ox_target or qb-target
 
 # Documentation
 You can find [Discord](https://discord.gg/DmsF6DbCJ9).
