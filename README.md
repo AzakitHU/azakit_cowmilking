@@ -40,7 +40,10 @@ https://www.youtube.com/watch?v=Fbr0rSMUAyU
 		weight = 520,
 		stack = true,
 		close = true,
-		description = nil
+		description = nil,
+		client = {
+			export = "azakit_cowmilking.useItem"
+		}
 	},
 
 	['homemademilk'] = {
