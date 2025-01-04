@@ -1,4 +1,3 @@
--- CLIENT
 local spawnedcow = {}
 local cowCoordsMap = {}
 
