@@ -223,7 +223,7 @@ exports("useItem", function(data, slot)
         hasEnoughBottles = GetItemCount(player.items, BOTTLE) >= BOTTLE_AMOUNT
     end
 
-    print("Debug: hasBucketMilk =", hasBucketMilk, "hasEnoughBottles =", hasEnoughBottles) -- Debug log
+    -- print("Debug: hasBucketMilk =", hasBucketMilk, "hasEnoughBottles =", hasEnoughBottles) -- Debug log
 
     if hasBucketMilk and hasEnoughBottles then
         -- Trigger the milking event only if the player has enough items
