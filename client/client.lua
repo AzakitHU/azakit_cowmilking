@@ -205,10 +205,14 @@ end
 -- exports("useItem", ...) call
 exports("useItem", function(data, slot)
     local itemName = data.name
-    local hasBucketMilk = false
-    local hasEnoughBottles = false
+    if FrameworkType == "QBCore" then
+        -- Request server to check for items and trigger event
+        TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
+    else
+        -- ESX already checks client-side
+        local hasBucketMilk = false
+        local hasEnoughBottles = false
 
-    if FrameworkType == "ESX" then
         local playerInventory = ESX.GetPlayerData().inventory
         for _, item in ipairs(playerInventory) do
             if item.name == BUCKETMILK then
@@ -217,37 +221,20 @@ exports("useItem", function(data, slot)
                 hasEnoughBottles = item.count >= BOTTLE_AMOUNT
             end
         end
-    elseif FrameworkType == "QBCore" then
-        local player = QBCore.Functions.GetPlayerData()
-        hasBucketMilk = GetItemCount(player.items, BUCKETMILK) >= 1
-        hasEnoughBottles = GetItemCount(player.items, BOTTLE) >= BOTTLE_AMOUNT
-    end
 
-    -- print("Debug: hasBucketMilk =", hasBucketMilk, "hasEnoughBottles =", hasEnoughBottles) -- Debug log
-
-    if hasBucketMilk and hasEnoughBottles then
-        -- Trigger the milking event only if the player has enough items
-        TriggerEvent('azakit_cowmilking:bucketmilk', itemName)
-    else
-        -- Notify the player they don't have the necessary items
-        lib.notify({
-            type = 'error',
-            title = _("need_more"),
-            position = 'top'
-        })
-    end
-end)
-
--- Function to get item count from inventory for QBCore
-function GetItemCount(items, itemName)
-    for _, item in pairs(items) do
-        if item.name == itemName then
-            return item.amount
+        if hasBucketMilk and hasEnoughBottles then
+            -- Trigger the milking event only if the player has enough items
+            TriggerEvent('azakit_cowmilking:bucketmilk', itemName)
+        else
+            -- Notify the player they don't have the necessary items
+            lib.notify({
+                type = 'error',
+                title = _("need_more"),
+                position = 'top'
+            })
         end
     end
-    return 0
-end
-
+end)
 
 RegisterNetEvent('azakit_cowmilking:bucketmilk')
 AddEventHandler('azakit_cowmilking:bucketmilk', function()
