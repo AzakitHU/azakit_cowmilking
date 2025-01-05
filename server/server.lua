@@ -123,6 +123,30 @@ AddEventHandler('azakit_cowmilking:markCowSpawned', function(index)
     end
 end)
 
+RegisterNetEvent('azakit_cowmilking:checkItems')
+AddEventHandler('azakit_cowmilking:checkItems', function(itemName)
+    local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+
+    if player then
+        local bucketMilkCount = player.Functions.GetItemByName(BUCKETMILK) and player.Functions.GetItemByName(BUCKETMILK).amount or 0
+        local bottleCount = player.Functions.GetItemByName(BOTTLE) and player.Functions.GetItemByName(BOTTLE).amount or 0
+
+        if bucketMilkCount >= 1 and bottleCount >= BOTTLE_AMOUNT then
+            -- Trigger the client event to proceed with milking
+            TriggerClientEvent('azakit_cowmilking:bucketmilk', src, itemName)
+        else
+            -- Notify the player they don't have the necessary items
+            TriggerClientEvent('ox_lib:notify', src, {
+                type = 'error',
+                title = _("need_more"),
+                position = 'top'
+            })
+        end
+    else
+        print("^1ERROR: Failed to retrieve player object.^0")
+    end
+end)
 
 RegisterNetEvent('azakit_cowmilking:bucketmilk')
 AddEventHandler('azakit_cowmilking:bucketmilk', function()
