@@ -3,7 +3,7 @@ local Cows = {}
 local ESX, QBCore = nil, nil
 
 if FrameworkType == "ESX" then
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+    ESX = exports["es_extended"]:getSharedObject()
 elseif FrameworkType == "QBCore" then
     QBCore = exports['qb-core']:GetCoreObject()
 end
