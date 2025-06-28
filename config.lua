@@ -1,6 +1,6 @@
 LANGUAGE = 'en'
 
-FrameworkType = "ESX" -- or "QBCore" (and fxmanifest.lua)
+FrameworkType = "ESX" -- or "QBCore"
 BUCKET = "bucket"  -- Is mandatory to start milking cows
 BUCKETMILK = "bucketmilk" -- The reward of milking cows
 InteractionType = "ox_target" -- Options: "ox_target" or "qb-target"
