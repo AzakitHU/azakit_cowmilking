@@ -1,6 +1,15 @@
 local spawnedcow = {}
 local cowCoordsMap = {}
 
+ESX = nil
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(100)
+    end
+end)
+
 ---@param resourceName string
 ---@return nil
 local function deleteAll(resourceName)
@@ -63,15 +72,6 @@ local function isCowAtCoords(coords)
     end
     return false
 end
-
-ESX = nil
-
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(100)
-    end
-end)
 
 RegisterNetEvent('azakit_cowmilking:syncCows')
 AddEventHandler('azakit_cowmilking:syncCows', function()
@@ -255,4 +255,5 @@ AddEventHandler('azakit_cowmilking:bucketmilk', function()
         Wait(1000)
     end
 end)
+
 
