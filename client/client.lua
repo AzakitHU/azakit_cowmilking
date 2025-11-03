@@ -1,15 +1,6 @@
 local spawnedcow = {}
 local cowCoordsMap = {}
 
-ESX = nil
-
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(100)
-    end
-end)
-
 ---@param resourceName string
 ---@return nil
 local function deleteAll(resourceName)
@@ -214,11 +205,7 @@ end
 -- exports("useItem", ...) call
 exports("useItem", function(data, slot)
     local itemName = data.name
-    if FrameworkType == "QBCore" then
-        TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
-    else
-        TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
-    end
+    TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
 end)
 
 RegisterNetEvent('azakit_cowmilking:bucketmilk')
@@ -255,5 +242,3 @@ AddEventHandler('azakit_cowmilking:bucketmilk', function()
         Wait(1000)
     end
 end)
-
-
