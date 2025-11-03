@@ -64,6 +64,15 @@ local function isCowAtCoords(coords)
     return false
 end
 
+ESX = nil
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(100)
+    end
+end)
+
 RegisterNetEvent('azakit_cowmilking:syncCows')
 AddEventHandler('azakit_cowmilking:syncCows', function()
     for i, cowData in ipairs(Cow) do
@@ -206,33 +215,11 @@ end
 exports("useItem", function(data, slot)
     local itemName = data.name
     if FrameworkType == "QBCore" then
-        -- Request server to check for items and trigger event
+        -- QBCore: szerver ellenőrzés
         TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
     else
-        -- ESX already checks client-side
-        local hasBucketMilk = false
-        local hasEnoughBottles = false
-
-        local playerInventory = ESX.GetPlayerData().inventory
-        for _, item in ipairs(playerInventory) do
-            if item.name == BUCKETMILK then
-                hasBucketMilk = item.count >= 1
-            elseif item.name == BOTTLE then
-                hasEnoughBottles = item.count >= BOTTLE_AMOUNT
-            end
-        end
-
-        if hasBucketMilk and hasEnoughBottles then
-            -- Trigger the milking event only if the player has enough items
-            TriggerEvent('azakit_cowmilking:bucketmilk', itemName)
-        else
-            -- Notify the player they don't have the necessary items
-            lib.notify({
-                type = 'error',
-                title = _("need_more"),
-                position = 'top'
-            })
-        end
+        -- ESX: szerver oldali ellenőrzés
+        TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
     end
 end)
 
@@ -270,4 +257,3 @@ AddEventHandler('azakit_cowmilking:bucketmilk', function()
         Wait(1000)
     end
 end)
-
