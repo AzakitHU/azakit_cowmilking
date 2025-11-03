@@ -3,7 +3,7 @@ lua54        'yes'
 game         'gta5'
 
 name         'azakit_cowmilking'
-version      '1.1.0'
+version      '1.1.1'
 author       'Azakit'
 description  'Milking a cow'
 
@@ -23,3 +23,4 @@ server_scripts {
 shared_scripts {
     '@ox_lib/init.lua',
 }
+
