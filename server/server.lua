@@ -126,25 +126,31 @@ end)
 RegisterNetEvent('azakit_cowmilking:checkItems')
 AddEventHandler('azakit_cowmilking:checkItems', function(itemName)
     local src = source
-    local player = QBCore.Functions.GetPlayer(src)
+    local player = Framework.GetPlayer(src)
 
-    if player then
-        local bucketMilkCount = player.Functions.GetItemByName(BUCKETMILK) and player.Functions.GetItemByName(BUCKETMILK).amount or 0
-        local bottleCount = player.Functions.GetItemByName(BOTTLE) and player.Functions.GetItemByName(BOTTLE).amount or 0
-
-        if bucketMilkCount >= 1 and bottleCount >= BOTTLE_AMOUNT then
-            -- Trigger the client event to proceed with milking
-            TriggerClientEvent('azakit_cowmilking:bucketmilk', src, itemName)
-        else
-            -- Notify the player they don't have the necessary items
-            TriggerClientEvent('ox_lib:notify', src, {
-                type = 'error',
-                title = _("need_more"),
-                position = 'top'
-            })
-        end
-    else
+    if not player then
         print("^1ERROR: Failed to retrieve player object.^0")
+        return
+    end
+
+    local bucketMilkCount, bottleCount = 0, 0
+
+    if FrameworkType == "ESX" then
+        bucketMilkCount = Framework.GetItemCount(src, BUCKETMILK)
+        bottleCount = Framework.GetItemCount(src, BOTTLE)
+    elseif FrameworkType == "QBCore" then
+        bucketMilkCount = Framework.GetItemCount(src, BUCKETMILK)
+        bottleCount = Framework.GetItemCount(src, BOTTLE)
+    end
+
+    if bucketMilkCount >= 1 and bottleCount >= BOTTLE_AMOUNT then
+        TriggerClientEvent('azakit_cowmilking:bucketmilk', src, itemName)
+    else
+        TriggerClientEvent('ox_lib:notify', src, {
+            type = 'error',
+            title = _("need_more"),
+            position = 'top'
+        })
     end
 end)
 
