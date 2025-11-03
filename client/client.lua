@@ -215,10 +215,8 @@ end
 exports("useItem", function(data, slot)
     local itemName = data.name
     if FrameworkType == "QBCore" then
-        -- QBCore: szerver ellenőrzés
         TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
     else
-        -- ESX: szerver oldali ellenőrzés
         TriggerServerEvent('azakit_cowmilking:checkItems', itemName)
     end
 end)
@@ -257,3 +255,4 @@ AddEventHandler('azakit_cowmilking:bucketmilk', function()
         Wait(1000)
     end
 end)
+
